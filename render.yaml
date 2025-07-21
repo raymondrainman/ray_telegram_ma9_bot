@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: ma9-bot-status
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: gunicorn main:app
+    envVars:
+      - key: TELEGRAM_TOKEN
+        value: 7733338006:AAG-nblQ5QGrO_U9scNYGPkVyQSEUhrZWuI
+      - key: CHAT_ID
+        value: 6437002032
+
+  - type: worker
+    name: ma9-bot-runner
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: python main.py
+    envVars:
+      - key: TELEGRAM_TOKEN
+        value: jouw_bot_token
+      - key: CHAT_ID
+        value: jouw_chat_id
